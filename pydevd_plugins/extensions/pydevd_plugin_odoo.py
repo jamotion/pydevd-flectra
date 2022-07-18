@@ -5,10 +5,10 @@ from _pydevd_bundle.pydevd_extension_api import TypeResolveProvider, StrPresenta
 from _pydevd_bundle.pydevd_resolver import defaultResolver
 
 
-class OdooRecordSetProvider(object):
+class FlectraRecordSetProvider(object):
     def can_provide(self, type_object, type_name):
         try:
-            from odoo import models
+            from flectra import models
             return isinstance(type_object, models.MetaModel)
         except:
             return False
@@ -39,5 +39,5 @@ class OdooRecordSetProvider(object):
 
 
 if not sys.platform.startswith("java"):
-    TypeResolveProvider.register(OdooRecordSetProvider)
-    StrPresentationProvider.register(OdooRecordSetProvider)
+    TypeResolveProvider.register(FlectraRecordSetProvider)
+    StrPresentationProvider.register(FlectraRecordSetProvider)
